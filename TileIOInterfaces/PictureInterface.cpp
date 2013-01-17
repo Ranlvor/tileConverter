@@ -39,7 +39,7 @@ QImage PictureInterface::createOutputImage(QList<QImage> tl){
     qDebug()<<"creating a picture with"<<pictures<<"tiles and a size of"<<outputSizeX<<"x"<<outputSizeY;
 
     QImage output(outputSizeX, outputSizeY, QImage::Format_ARGB32);
-    output.fill(Qt::black);
+    output.fill(Qt::transparent);
 
     QPainter painter(&output);
     QRect source(0, 0, tileSize,tileSize);
