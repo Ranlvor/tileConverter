@@ -6,7 +6,7 @@ class FolderInterface : public TileIOInterface
 public:
     FolderInterface();
     void setOutputFormat(char* newOutputFormat);
-    //void saveTileList(QList<QImage> tl, QString destination);
+    void saveTileList(QList<QImage> tl, QString destination);
     QList<QImage> loadTileList(QString source, int tileSize);
 
 private:
