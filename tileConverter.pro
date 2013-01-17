@@ -6,7 +6,7 @@
 
 QT       += core
 
-QT       -= gui
+#QT       -= gui
 
 TARGET = tileConverter
 CONFIG   += console

@@ -2,7 +2,7 @@
 #define TILEIOINTERFACE_H
 #include <QList>
 #include <QImage>
-
+#include <QDebug>
 class TileIOInterface
 {
     public:
