@@ -17,9 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     TileIOInterfaces/FolderInterface.cpp \
-    TileIOInterfaces/PictureInterface.cpp
+    TileIOInterfaces/PictureInterface.cpp \
+    TileIOInterfaces/NonchipTilesetV2Interface.cpp
 
 HEADERS += \
     TileIOInterface.h \
     TileIOInterfaces/FolderInterface.h \
-    TileIOInterfaces/PictureInterface.h
+    TileIOInterfaces/PictureInterface.h \
+    TileIOInterfaces/NonchipTilesetV2Interface.h

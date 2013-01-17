@@ -13,6 +13,9 @@ void PictureInterface::setOutputFormat(char* newOutputFormat){
 void PictureInterface::setSpacing (int newSpacing){
     spacing = newSpacing;
 }
+void PictureInterface::setPicturesPerLine (int newPicturesPerLine){
+    defaultPicturesPerLine = newPicturesPerLine;
+}
 
 void PictureInterface::saveTileList(QList<QImage> tl, QString destination){
     QImage output = createOutputImage(tl);
@@ -22,7 +25,11 @@ void PictureInterface::saveTileList(QList<QImage> tl, QString destination){
 
 QImage PictureInterface::createOutputImage(QList<QImage> tl){
     int pictures = tl.length();
-    int picturesPerLine = qFloor(qSqrt(pictures)+0.5);
+
+    int picturesPerLine = defaultPicturesPerLine;
+    if(picturesPerLine == 0)
+        picturesPerLine = qFloor(qSqrt(pictures)+0.5);
+
     int numberOfLines = qCeil( ((qreal)pictures) / ((qreal) picturesPerLine) );
 
     int tileSize = tl.first().width();
