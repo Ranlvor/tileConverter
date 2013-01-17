@@ -11,6 +11,7 @@ class TileIOInterface
         }
         QList<QImage> loadTileList(QString /*source*/, int /*tileSize*/){
             qDebug()<<"this method is not implemented";
+            return QList<QImage>();
         }
 };
 #endif // TILEIOINTERFACE_H

@@ -15,7 +15,9 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    TileIOInterfaces/FolderInterface.cpp
 
 HEADERS += \
-    TileIOInterface.h
+    TileIOInterface.h \
+    TileIOInterfaces/FolderInterface.h
