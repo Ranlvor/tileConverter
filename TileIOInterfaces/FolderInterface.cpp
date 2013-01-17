@@ -33,6 +33,7 @@ QList<QImage> FolderInterface::loadTileList(QString source, int tileSize){
 }
 
 void FolderInterface::saveTileList(QList<QImage> tl, QString destination){
+    qDebug()<<"saving tilelist";
     QDir destinationFolder(destination);
     if(!destinationFolder.isReadable())
         return;

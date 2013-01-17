@@ -59,3 +59,21 @@ QImage PictureInterface::createOutputImage(QList<QImage> tl){
     }
     return output;
 }
+
+QList<QImage> PictureInterface::loadTileList(QString source, int tileSize){
+    qDebug()<<"loading tileset";
+    QImage inputImage;
+    inputImage.load(source);
+    return parseInputImage(inputImage, tileSize);
+}
+
+QList<QImage> PictureInterface::parseInputImage(QImage input, int tileSize){
+    QList<QImage> output;
+    for(int y = 0; y < input.height(); y += (tileSize+spacing)){
+        for(int x = 0; x < input.width(); x += (tileSize+spacing)){
+            QImage image = input.copy(x,y,tileSize,tileSize);
+            output.append(image);
+        }
+    }
+    return output;
+}

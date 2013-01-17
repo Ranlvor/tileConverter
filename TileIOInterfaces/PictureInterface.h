@@ -11,7 +11,8 @@ public:
     void setPicturesPerLine(int newPicturesPerLine);
     void saveTileList(QList<QImage> tl, QString destination);
     QImage createOutputImage(QList<QImage> tl);
-    //QList<QImage> loadTileList(QString source, int tileSize);
+    QList<QImage> loadTileList(QString source, int tileSize);
+    QList<QImage> parseInputImage(QImage input, int tileSize);
 
 private:
     char * outputFormat;

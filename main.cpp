@@ -5,10 +5,12 @@
 int main(int argc, char *argv[])
 {
     FolderInterface fi;
-    NonchipTilesetV2Interface pi;
-    QList<QImage> tileList = fi.loadTileList("/tmp/testdata/input", 255);
-    pi.setSpacing(10);
-    pi.saveTileList(tileList, "/tmp/testdata/output.raw");
+    NonchipTilesetV2Interface ni;
+    PictureInterface pi;
+    pi.setSpacing(100);
+    QList<QImage> tileList = pi.loadTileList("/tmp/testdata/output.png", 255);
+    //ni.saveTileList(tileList, "/tmp/testdata/output.raw");
+    fi.saveTileList(tileList, "/tmp/testdata/output");
     //QCoreApplication a(argc, argv);
     //return a.exec();
 }
