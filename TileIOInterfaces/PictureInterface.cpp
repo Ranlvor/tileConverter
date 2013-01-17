@@ -15,6 +15,12 @@ void PictureInterface::setSpacing (int newSpacing){
 }
 
 void PictureInterface::saveTileList(QList<QImage> tl, QString destination){
+    QImage output = createOutputImage(tl);
+    qDebug()<<"saving to"<<destination;
+    output.save(destination,outputFormat);
+}
+
+QImage PictureInterface::createOutputImage(QList<QImage> tl){
     int pictures = tl.length();
     int picturesPerLine = qFloor(qSqrt(pictures)+0.5);
     int numberOfLines = qCeil( ((qreal)pictures) / ((qreal) picturesPerLine) );
@@ -23,7 +29,7 @@ void PictureInterface::saveTileList(QList<QImage> tl, QString destination){
     int outputSizeX = (tileSize+spacing)*picturesPerLine-spacing;//every tile gets spacing pixels bigger exept the
     int outputSizeY = (tileSize+spacing)*numberOfLines-spacing;  //ones in the last row and in the last column
 
-    qDebug()<<"saving"<<pictures<<"tiles to"<<destination<<"with a size of"<<outputSizeX<<"x"<<outputSizeY;
+    qDebug()<<"creating a picture with"<<pictures<<"tiles and a size of"<<outputSizeX<<"x"<<outputSizeY;
 
     QImage output(outputSizeX, outputSizeY, QImage::Format_ARGB32);
     output.fill(Qt::black);
@@ -44,6 +50,5 @@ void PictureInterface::saveTileList(QList<QImage> tl, QString destination){
             column = 0;
         }
     }
-
-    output.save(destination,outputFormat);
+    return output;
 }

@@ -9,6 +9,7 @@ public:
     void setOutputFormat(char* newOutputFormat);
     void setSpacing (int newSpacing);
     void saveTileList(QList<QImage> tl, QString destination);
+    QImage createOutputImage(QList<QImage> tl);
     //QList<QImage> loadTileList(QString source, int tileSize);
 
 private:
