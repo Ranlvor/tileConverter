@@ -32,10 +32,10 @@ void NonchipTilesetV2Interface::handleBatch(QList<QImage> tl, QString destinatio
     qDebug()<<"writing output-file with estimated size of"<<(outputImage.width()*outputImage.height()*4)<<"bytes";
     QFile outputFile(destination);
     outputFile.open(QFile::WriteOnly);
-    qint8 size = tl.first().width();
+    quint8 size = tl.first().width();
     outputFile.write( ( (char*) &size ),1); //1 byte tilesize in pixel
     QRgb pixel;
-    qint8 value;
+    quint8 value;
     for (int y = 0; y<outputImage.height(); ++y){
         for (int x = 0; x<outputImage.width(); ++x){
             pixel = outputImage.pixel(x,y);
@@ -51,4 +51,29 @@ void NonchipTilesetV2Interface::handleBatch(QList<QImage> tl, QString destinatio
         }
     }
     outputFile.close();
+}
+
+QList<QImage> NonchipTilesetV2Interface::loadTileList(QString source, int /*tileSize*/){
+    return loadTileList(source);
+}
+
+QList<QImage> NonchipTilesetV2Interface::loadTileList(QString source){
+    QFile inputFile (source);
+    inputFile.open(QFile::ReadOnly);
+    quint8 tileSize;
+    inputFile.read( ( (char*) &tileSize ),1);
+    qDebug()<<"loading tileset with tileSize"<<tileSize;
+    int width = tileSize * 16;
+    int height = (inputFile.size()-1)/4/width;
+    qDebug()<<"calculated size:"<<width<<"x"<<height;
+
+    QImage inputImage(width, height, QImage::Format_ARGB32);
+    quint8 value[4];
+    for (int y = 0; y<height; ++y){
+        for (int x = 0; x<width; ++x){
+            inputFile.read( ( (char*) &value ),4);
+            inputImage.setPixel(x,y,qRgba(value[0],value[1],value[2],value[3]));
+        }
+    }
+    return parseInputImage(inputImage, tileSize);
 }

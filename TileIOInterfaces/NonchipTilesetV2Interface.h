@@ -8,6 +8,8 @@ public:
     NonchipTilesetV2Interface();
     void saveTileList(QList<QImage> tl, QString destination);
     void handleBatch(QList<QImage> tl, QString destination);
+    QList<QImage> loadTileList(QString source, int tileSize); //only for the interface
+    QList<QImage> loadTileList(QString source); //does the work
 };
 
 #endif // NONCHIPTILESETV2INTERFACE_H
