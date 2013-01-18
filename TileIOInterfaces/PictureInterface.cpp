@@ -5,6 +5,8 @@
 PictureInterface::PictureInterface()
 {
     outputFormat = "png";
+    spacing=0;
+    defaultPicturesPerLine=0;
 }
 
 void PictureInterface::setOutputFormat(char* newOutputFormat){

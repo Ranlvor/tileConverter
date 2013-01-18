@@ -16,8 +16,8 @@ public:
 
 private:
     char * outputFormat;
-    int spacing = 0;
-    int defaultPicturesPerLine = 0;
+    int spacing;
+    int defaultPicturesPerLine;
 };
 
 #endif // PICTUREINTERFACE_H
