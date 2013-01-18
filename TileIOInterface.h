@@ -6,10 +6,10 @@
 class TileIOInterface
 {
     public:
-        void saveTileList(QList<QImage> /*tl*/, QString /*destination*/){
+        virtual void saveTileList(QList<QImage> /*tl*/, QString /*destination*/){
             qDebug()<<"this method is not implemented";
         }
-        QList<QImage> loadTileList(QString /*source*/, int /*tileSize*/){
+        virtual QList<QImage> loadTileList(QString /*source*/, int /*tileSize*/){
             qDebug()<<"this method is not implemented";
             return QList<QImage>();
         }
